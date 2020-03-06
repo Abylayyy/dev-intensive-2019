@@ -14,14 +14,14 @@ class User private constructor(
 ) {
 
     data class Builder(
-        var id: String? = null,
-        var firstName: String? = null,
-        var lastName: String? = null,
-        var avatar: String? = null,
-        var rating: Int = 0,
-        var respect: Int = 0,
-        var lastVisit: Date? = Date(),
-        var isOnline: Boolean = false
+        private var id: String? = null,
+        private var firstName: String? = null,
+        private var lastName: String? = null,
+        private var avatar: String? = null,
+        private var rating: Int = 0,
+        private var respect: Int = 0,
+        private var lastVisit: Date? = Date(),
+        private var isOnline: Boolean = false
     ) {
         fun id(id: String?) = apply { this.id = id }
         fun firstName(id: String?) = apply { this.firstName = id }
