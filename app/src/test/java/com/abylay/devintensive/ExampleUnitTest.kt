@@ -1,80 +1,114 @@
 package com.abylay.devintensive
 
-import com.abylay.devintensive.extensions.TimeUnits
-import com.abylay.devintensive.extensions.add
-import com.abylay.devintensive.extensions.format
-import com.abylay.devintensive.extensions.toUserView
+import com.abylay.devintensive.extensions.*
+import com.abylay.devintensive.models.BaseMessage
+import com.abylay.devintensive.models.Chat
 import com.abylay.devintensive.models.User
 import com.abylay.devintensive.utils.Utils
 import org.junit.Test
-
-import org.junit.Assert.*
 import java.util.*
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
 
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun test_format() {
+        println(Date().format())
+        println(Date().format("HH:mm"))
     }
 
     @Test
-    fun test_factory() {
-        val user = User("1", firstName = "John", lastName = "Adams", lastVisit = Date())
-        val user2 = user.copy(lastVisit = Date().add(5, TimeUnits.MINUTE))
-        val user3 = user2.copy(lastVisit = Date().add(7, TimeUnits.HOUR))
+    fun test_baseMessage() {
+        val user1 = User("1", firstName = "John", lastName = "Adams", lastVisit = Date().add(-1, TimeUnits.HOUR))
+        val user2 = User("2", firstName = "John", lastName = "Doe", lastVisit = Date().add(-2, TimeUnits.MINUTE))
+        println(
+            user1.lastVisit?.let {
+                BaseMessage.makeMessage(
+                    user1,
+                    Chat("1", mutableListOf(user1, user2), mutableListOf()),
+                    it,
+                    "image",
+                    "Hello",
+                    true
+                ).formatMessage()
+            }
+        )
+    }
 
-        print("""
-            first user -> ${user.lastVisit?.format()}
-            second user -> ${user2.lastVisit?.format()}
-            third user -> ${user3.lastVisit?.format()}
+    @Test
+    fun test_humanize() {
+        println("""
+            ${Date().add(-1, TimeUnits.SECOND).humanizeDiff()}
+            ${Date().add(-45, TimeUnits.SECOND).humanizeDiff()}
+            ${Date().add(-75, TimeUnits.SECOND).humanizeDiff()}
+            ${Date().add(-2, TimeUnits.MINUTE).humanizeDiff()}
+            ${Date().add(-60, TimeUnits.MINUTE).humanizeDiff()}
+            ${Date().add(-10, TimeUnits.HOUR).humanizeDiff()}
+            ${Date().add(-30, TimeUnits.DAY).humanizeDiff()}
+            ${Date().add(-370, TimeUnits.DAY).humanizeDiff()}
         """.trimIndent())
     }
 
     @Test
     fun test_parse_full_name() {
-        println(Utils.parseFullName("John Doe"))
-        println(Utils.parseFullName(null))
-        println(Utils.parseFullName("${null} John"))
-        println(Utils.parseFullName(""))
-        println(Utils.parseFullName(" "))
-        println(Utils.parseFullName("John"))
+        println("""
+            ${Utils.parseFullName("John Doe")}
+            ${Utils.parseFullName(null)}
+            ${Utils.parseFullName("${null} John")}
+            ${Utils.parseFullName("")}
+            ${Utils.parseFullName(" ")}
+            ${Utils.parseFullName("John")}
+        """.trimIndent())
     }
 
     @Test
     fun test_initials() {
-        println(Utils.toInitials("john" ,"doe")) //JD
-        println(Utils.toInitials("John", null)) //J
-        println(Utils.toInitials(null, null)) //null
-        println(Utils.toInitials(" ", "")) //null
+        println(Utils.toInitials("john" ,"doe"))
+        println(Utils.toInitials("John", null))
+        println(Utils.toInitials(null, null))
+        println(Utils.toInitials(" ", ""))
     }
 
     @Test
     fun test_transliteration() {
         println(Utils.transliteration("Женя Стереотипов"))
         println(Utils.transliteration("Amazing Петр","_"))
+        println(Utils.transliteration("Amazing"))
     }
 
     @Test
-    fun test_decomposition() {
-        val user = User.makeUser("John Wick")
-
-        fun getUserInfo() = user
-        val (id, firstname, lastname) = getUserInfo()
-
-        println("$id $firstname $lastname")
+    fun test_plural() {
+        println("""
+            ${TimeUnits.SECOND.plural(1)}
+            ${TimeUnits.MINUTE.plural(4)}
+            ${TimeUnits.HOUR.plural(19)}
+            ${TimeUnits.DAY.plural(222)}
+        """.trimIndent())
     }
 
     @Test
-    fun test_data_maping() {
-        val user = User.makeUser("Makeev Michael")
+    fun test_builder() {
+        val user = com.abylay.devintensive.extensions.User.Builder()
+            .id("1")
+            .firstName("Adam")
+            .lastName("Driver")
+            .avatar("image")
+            .rating(5)
+            .respect(10)
+            .lastVisit(Date().add(-5, TimeUnits.HOUR))
+            .isOnline(true)
+            .build()
         println(user)
-        val userView = user.toUserView()
-        userView.printMe()
+    }
+
+    @Test
+    fun test_truncate() {
+        println("Samal jelde shalkar kolde demalamyz kaitamyz".truncate())
+        println("Samal jelde shalkar kolde demalamyz kaitamyz".truncate(43))
+    }
+
+    @Test
+    fun test_striphtml() {
+        println("<p class=\"title\">Образовательное IT-сообщество Skill Branch</p>".stripHtml())
+        println("<p>Образовательное       IT-сообщество Skill Branch</p>".stripHtml())
     }
 }

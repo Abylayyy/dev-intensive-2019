@@ -1,6 +1,5 @@
 package com.abylay.devintensive.utils
 
-import android.icu.text.Transliterator
 import java.util.*
 
 object Utils {
@@ -19,7 +18,22 @@ object Utils {
     }
 
     fun transliteration(payLoad: String, divider: String = " "): String {
-        return "$payLoad$divider"
+        var result: String = payLoad
+
+        result.forEach {
+            if (map.containsKey(it.toString().toLowerCase(Locale.ROOT))) {
+                result = result.replace(
+                    it.toString(),
+                    map.getValue(it.toString().toLowerCase(Locale.ROOT))
+                )
+            }
+        }
+        val arr = result.split(" ").toMutableList()
+        if (arr.size == 2) {
+            arr[0] = arr[0].replace(arr[0][0], arr[0][0].toUpperCase())
+            arr[1] = arr[1].replace(arr[1][0], arr[1][0].toUpperCase())
+        }
+        return arr.joinToString(separator = divider)
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
@@ -33,7 +47,7 @@ object Utils {
         }
     }
 
-    val map: Map<String, String>? = mapOf (
+    val map = mapOf (
         "а" to "a", "б" to "b", "в" to "v",
         "г" to "g", "д" to "d", "е" to "e",
         "ё" to "e", "ж" to "zh", "з" to "z",

@@ -1,25 +1,37 @@
 package com.abylay.devintensive.extensions
 
-import com.abylay.devintensive.models.User
-import com.abylay.devintensive.models.UserView
-import com.abylay.devintensive.utils.Utils
 import java.util.*
 
-fun User.toUserView(): UserView {
-    //val nickname = Utils.transLiteration("$firstName $lastName")
-    val initials = Utils.toInitials(firstName, lastName)
-    val status = if (lastVisit == null) "Еще ни разу не был" else if (isOnline) "online" else "Последний раз был " +
-            lastVisit.humanizeDiff()
+class User private constructor(
+    val id: String?,
+    var firstName: String?,
+    var lastName: String?,
+    var avatar: String?,
+    var rating: Int,
+    var respect: Int,
+    val lastVisit: Date?,
+    val isOnline: Boolean
+) {
 
-    return UserView(
-        id,
-        fullName = "$firstName $lastVisit",
-        nickName = "nickname",
-        initials = initials,
-        avatar = avatar,
-        status = status)
-}
+    data class Builder(
+        var id: String? = null,
+        var firstName: String? = null,
+        var lastName: String? = null,
+        var avatar: String? = null,
+        var rating: Int = 0,
+        var respect: Int = 0,
+        var lastVisit: Date? = Date(),
+        var isOnline: Boolean = false
+    ) {
+        fun id(id: String?) = apply { this.id = id }
+        fun firstName(id: String?) = apply { this.firstName = id }
+        fun lastName(id: String?) = apply { this.lastName = id }
+        fun avatar(id: String?) = apply { this.avatar = id }
+        fun rating(id: Int) = apply { this.rating = id }
+        fun respect(id: Int) = apply { this.respect = id }
+        fun lastVisit(id: Date) = apply { this.lastVisit = id }
+        fun isOnline(id: Boolean) = apply { this.isOnline = id }
 
-private fun Date.humanizeDiff(date: Date = Date()): String {
-    return ""
+        fun build() = User(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
+    }
 }
