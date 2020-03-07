@@ -60,19 +60,16 @@ enum class TimeUnits {
     SECOND, MINUTE, HOUR, DAY;
 
     fun plural(value: Int): String {
-        if (value > 0) {
-            return when {
-                value <= 1 && this == SECOND -> "$value секунду"
-                value > 1 && this == SECOND -> "$value секунды"
-                value <= 1 && this == MINUTE -> "$value минуту"
-                value > 1 && this == MINUTE -> "$value минуты"
-                value <= 1 && this == HOUR -> "$value час"
-                value in 2..4 -> "$value часа"
-                value > 5 && this == HOUR -> "$value часов"
-                value <= 1 && this == DAY -> "$value день"
-                else -> "$value дня"
-            }
+        return when {
+            value <= 1 && this == SECOND -> "$value секунду"
+            value > 1 && this == SECOND -> "$value секунды"
+            value <= 1 && this == MINUTE -> "$value минуту"
+            value > 1 && this == MINUTE -> "$value минуты"
+            value <= 1 && this == HOUR -> "$value часу"
+            value in 2..4 -> "$value часа"
+            value > 5 && this == HOUR -> "$value часов"
+            value <= 1 && this == DAY -> "$value день"
+            else -> "$value дня"
         }
-        return "number should not have to be negative"
     }
 }
