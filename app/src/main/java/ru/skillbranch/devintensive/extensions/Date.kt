@@ -59,18 +59,18 @@ fun Date.humanizeDiff(): String {
 enum class TimeUnits {
     SECOND, MINUTE, HOUR, DAY;
 
-    fun plural(n: Int): String {
-        if (n > 0) {
+    fun plural(value: Int): String {
+        if (value > 0) {
             return when {
-                n <= 1 && this == SECOND -> "$n секунду"
-                n > 1 && this == SECOND -> "$n секунды"
-                n <= 1 && this == MINUTE -> "$n минуту"
-                n > 1 && this == MINUTE -> "$n минуты"
-                n <= 1 && this == HOUR -> "$n часу"
-                n in 2..4 -> "$n часа"
-                n > 5 && this == HOUR -> "$n часов"
-                n <= 1 && this == DAY -> "$n день"
-                else -> "$n дня"
+                value <= 1 && this == SECOND -> "$value секунду"
+                value > 1 && this == SECOND -> "$value секунды"
+                value <= 1 && this == MINUTE -> "$value минуту"
+                value > 1 && this == MINUTE -> "$value минуты"
+                value <= 1 && this == HOUR -> "$value часу"
+                value in 2..4 -> "$value часа"
+                value > 5 && this == HOUR -> "$value часов"
+                value <= 1 && this == DAY -> "$value день"
+                else -> "$value дня"
             }
         }
         return "number should not have to be negative"
