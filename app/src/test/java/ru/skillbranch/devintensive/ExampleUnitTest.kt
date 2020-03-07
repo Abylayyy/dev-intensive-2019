@@ -1,6 +1,5 @@
 package ru.skillbranch.devintensive
 
-import com.abylay.devintensive.extensions.*
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
@@ -10,6 +9,12 @@ import ru.skillbranch.devintensive.extensions.*
 import java.util.*
 
 class ExampleUnitTest {
+
+    @Test
+    fun test_user() {
+        val user = User.makeUser("Tillabek Abylay")
+        println(user)
+    }
 
     @Test
     fun test_format() {
