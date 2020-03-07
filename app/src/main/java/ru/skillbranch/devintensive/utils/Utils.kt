@@ -1,4 +1,4 @@
-package com.abylay.devintensive.utils
+package ru.skillbranch.devintensive.utils
 
 import java.util.*
 

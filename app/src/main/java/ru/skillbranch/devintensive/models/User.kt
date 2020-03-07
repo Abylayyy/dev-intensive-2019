@@ -1,6 +1,6 @@
-package com.abylay.devintensive.models
+package ru.skillbranch.devintensive.models
 
-import com.abylay.devintensive.utils.Utils
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 data class User(
@@ -33,11 +33,16 @@ data class User(
         private var lastId = -1
 
         fun makeUser(fullName: String?): User {
-            lastId ++
+            lastId++
 
             val (firstName, lastName) = Utils.parseFullName(fullName)
 
-            return User(userId = "$lastId", firstName = firstName, lastName = lastName, lastVisit = Date())
+            return User(
+                userId = "$lastId",
+                firstName = firstName,
+                lastName = lastName,
+                lastVisit = Date()
+            )
         }
     }
 }

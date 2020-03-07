@@ -1,7 +1,6 @@
-package com.abylay.devintensive.models
+package ru.skillbranch.devintensive.models
 
-import com.abylay.devintensive.extensions.add
-import com.abylay.devintensive.extensions.humanizeDiff
+import ru.skillbranch.devintensive.extensions.humanizeDiff
 import java.util.*
 
 class TextMessage(

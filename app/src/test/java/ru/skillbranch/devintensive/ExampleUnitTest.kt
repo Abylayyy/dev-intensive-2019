@@ -1,11 +1,12 @@
-package com.abylay.devintensive
+package ru.skillbranch.devintensive
 
 import com.abylay.devintensive.extensions.*
-import com.abylay.devintensive.models.BaseMessage
-import com.abylay.devintensive.models.Chat
-import com.abylay.devintensive.models.User
-import com.abylay.devintensive.utils.Utils
+import ru.skillbranch.devintensive.models.BaseMessage
+import ru.skillbranch.devintensive.models.Chat
+import ru.skillbranch.devintensive.models.User
+import ru.skillbranch.devintensive.utils.Utils
 import org.junit.Test
+import ru.skillbranch.devintensive.extensions.*
 import java.util.*
 
 class ExampleUnitTest {
@@ -18,13 +19,33 @@ class ExampleUnitTest {
 
     @Test
     fun test_baseMessage() {
-        val user1 = User("1", firstName = "John", lastName = "Adams", lastVisit = Date().add(-1, TimeUnits.HOUR))
-        val user2 = User("2", firstName = "John", lastName = "Doe", lastVisit = Date().add(-2, TimeUnits.MINUTE))
+        val user1 = User(
+            "1",
+            firstName = "John",
+            lastName = "Adams",
+            lastVisit = Date().add(
+                -1,
+                TimeUnits.HOUR
+            )
+        )
+        val user2 = User(
+            "2",
+            firstName = "John",
+            lastName = "Doe",
+            lastVisit = Date().add(
+                -2,
+                TimeUnits.MINUTE
+            )
+        )
         println(
             user1.lastVisit?.let {
                 BaseMessage.makeMessage(
                     user1,
-                    Chat("1", mutableListOf(user1, user2), mutableListOf()),
+                    Chat(
+                        "1",
+                        mutableListOf(user1, user2),
+                        mutableListOf()
+                    ),
                     it,
                     "image",
                     "Hello",
@@ -87,7 +108,7 @@ class ExampleUnitTest {
 
     @Test
     fun test_builder() {
-        val user = com.abylay.devintensive.extensions.User.Builder()
+        val user = ru.skillbranch.devintensive.extensions.User.Builder()
             .id("1")
             .firstName("Adam")
             .lastName("Driver")

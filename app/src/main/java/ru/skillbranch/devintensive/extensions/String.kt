@@ -1,4 +1,4 @@
-package com.abylay.devintensive.extensions
+package ru.skillbranch.devintensive.extensions
 
 fun String.truncate(n: Int = 16) = if (n <= length) substring(0, n) + "..." else "index out of range"
 

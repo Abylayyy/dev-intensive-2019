@@ -1,4 +1,4 @@
-package com.abylay.devintensive.extensions
+package ru.skillbranch.devintensive.extensions
 
 import java.util.*
 
@@ -32,6 +32,15 @@ class User private constructor(
         fun lastVisit(id: Date) = apply { this.lastVisit = id }
         fun isOnline(id: Boolean) = apply { this.isOnline = id }
 
-        fun build() = User(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
+        fun build() = User(
+            id,
+            firstName,
+            lastName,
+            avatar,
+            rating,
+            respect,
+            lastVisit,
+            isOnline
+        )
     }
 }
