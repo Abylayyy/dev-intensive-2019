@@ -98,7 +98,7 @@ class ExampleUnitTest {
     fun test_transliteration() {
         println(Utils.transliteration("Женя Стереотипов"))
         println(Utils.transliteration("Amazing Петр","_"))
-        println(Utils.transliteration("Азамат Сатыбалды", "_"))
+        println(Utils.transliteration("Азамат cатыбалды Taz", "_"))
     }
 
     @Test

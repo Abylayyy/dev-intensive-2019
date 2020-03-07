@@ -66,7 +66,7 @@ enum class TimeUnits {
                 value > 1 && this == SECOND -> "$value секунды"
                 value <= 1 && this == MINUTE -> "$value минуту"
                 value > 1 && this == MINUTE -> "$value минуты"
-                value <= 1 && this == HOUR -> "$value часу"
+                value <= 1 && this == HOUR -> "$value час"
                 value in 2..4 -> "$value часа"
                 value > 5 && this == HOUR -> "$value часов"
                 value <= 1 && this == DAY -> "$value день"

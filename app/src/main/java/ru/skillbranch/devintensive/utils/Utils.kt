@@ -19,21 +19,15 @@ object Utils {
 
     fun transliteration(payload: String, divider: String = " "): String {
         var result: String = payload
-
         result.forEach {
-            if (map.containsKey(it.toString().toLowerCase(Locale.ROOT))) {
+            if (map.containsKey(it.toString())) {
                 result = result.replace(
                     it.toString(),
-                    map.getValue(it.toString().toLowerCase(Locale.ROOT))
+                    map.getValue(it.toString())
                 )
             }
         }
-        val arr = result.split(" ").toMutableList()
-        if (arr.size == 2) {
-            arr[0] = arr[0].replace(arr[0][0], arr[0][0].toUpperCase())
-            arr[1] = arr[1].replace(arr[1][0], arr[1][0].toUpperCase())
-        }
-        return arr.joinToString(separator = divider)
+        return result.split(" ").joinToString(separator = divider)
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
@@ -58,6 +52,17 @@ object Utils {
         "ф" to "f", "х" to "h", "ц" to "c",
         "ч" to "ch", "ш" to "sh", "щ" to "sh'",
         "ъ" to "", "ы" to "i", "ь" to "",
-        "э" to "e", "ю" to "yu", "я" to "ya"
+        "э" to "e", "ю" to "yu", "я" to "ya",
+
+        "А" to "A", "Б" to "B", "В" to "V",
+        "Г" to "G", "Д" to "D", "Е" to "E",
+        "Ё" to "E", "Ж" to "Zh", "З" to "Z",
+        "И" to "I", "Й" to "I", "К" to "K",
+        "Л" to "L", "М" to "M", "Н" to "N",
+        "О" to "O", "П" to "P", "Р" to "R",
+        "С" to "S", "Т" to "T", "У" to "U",
+        "Ф" to "F", "Х" to "H", "Ц" to "C",
+        "Ч" to "Ch", "Ш" to "Sh", "Щ" to "Sh'", "Ы" to "I",
+        "Э" to "E", "Ю" to "Yu", "Я" to "Ya"
     )
 }
