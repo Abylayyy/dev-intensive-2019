@@ -14,8 +14,8 @@ class TextMessage(
 
     override fun formatMessage(): String {
         return when (isIncoming) {
-            false -> "${from?.firstName} отправил сообщение ${text} ${date.humanizeDiff()}"
-            else -> "${from?.firstName} получил сообщение ${text} ${date.humanizeDiff()}"
+            false -> "${from?.firstName} отправил сообщение \"${text}\" ${date.humanizeDiff()}"
+            else -> "${from?.firstName} получил сообщение \"${text}\" ${date.humanizeDiff()}"
         }
     }
 

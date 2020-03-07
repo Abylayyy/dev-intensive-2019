@@ -53,8 +53,7 @@ class ExampleUnitTest {
                     ),
                     it,
                     "image",
-                    "Hello",
-                    true
+                    "Hello"
                 ).formatMessage()
             }
         )
@@ -98,7 +97,6 @@ class ExampleUnitTest {
     fun test_transliteration() {
         println(Utils.transliteration("Женя Стереотипов"))
         println(Utils.transliteration("Amazing Петр","_"))
-        println(Utils.transliteration("Amazing"))
     }
 
     @Test
@@ -113,7 +111,7 @@ class ExampleUnitTest {
 
     @Test
     fun test_builder() {
-        val user = ru.skillbranch.devintensive.extensions.User.Builder()
+        val user = User.Builder()
             .id("1")
             .firstName("Adam")
             .lastName("Driver")

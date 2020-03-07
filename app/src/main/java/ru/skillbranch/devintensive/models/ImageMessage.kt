@@ -14,8 +14,8 @@ class ImageMessage(
 
     override fun formatMessage(): String {
         return when (isIncoming) {
-            false -> "${from?.firstName} отправил изображение ${image} ${date.humanizeDiff()}"
-            else -> "${from?.firstName} получил изображение ${image} ${date.humanizeDiff()}"
+            false -> "${from?.firstName} отправил изображение \"${image}\" ${date.humanizeDiff()}"
+            else -> "${from?.firstName} получил изображение \"${image}\" ${date.humanizeDiff()}"
         }
     }
 }
