@@ -17,8 +17,8 @@ object Utils {
         return firstname to lastName
     }
 
-    fun transliteration(payLoad: String, divider: String = " "): String {
-        var result: String = payLoad
+    fun transliteration(payload: String, divider: String = " "): String {
+        var result: String = payload
 
         result.forEach {
             if (map.containsKey(it.toString().toLowerCase(Locale.ROOT))) {

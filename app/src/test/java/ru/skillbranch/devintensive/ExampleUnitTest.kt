@@ -70,6 +70,7 @@ class ExampleUnitTest {
             ${Date().add(-10, TimeUnits.HOUR).humanizeDiff()}
             ${Date().add(-30, TimeUnits.DAY).humanizeDiff()}
             ${Date().add(-370, TimeUnits.DAY).humanizeDiff()}
+            ${Date().add(30, TimeUnits.DAY).humanizeDiff()}
         """.trimIndent())
     }
 
