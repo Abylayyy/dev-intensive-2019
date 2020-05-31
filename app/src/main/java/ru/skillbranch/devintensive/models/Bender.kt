@@ -18,13 +18,14 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
             "Отлично - ты справился\n${question.question}" to status.color
         } else {
             count ++
-            if (count >= 2) {
+            if (count > 3) {
                 count = 0
-                status = status.nextStatus()
+                status = Status.NORMAL
                 "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
+            } else {
+                status = status.nextStatus()
+                "Это неправильный ответ\n${question.question}" to status.color
             }
-            status = status.nextStatus()
-            "Это неправильный ответ\n${question.question}" to status.color
         }
     }
 
