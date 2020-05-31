@@ -5,8 +5,7 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 
-
-fun Activity.hideKeyBoard() {
+fun Activity.hideKeyboard() {
     hideKeyBoard(currentFocus ?: View(this))
 }
 
