@@ -3,6 +3,7 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 import ru.skillbranch.devintensive.extensions.*
 import ru.skillbranch.devintensive.models.BaseMessage
+import ru.skillbranch.devintensive.models.Bender
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
 import ru.skillbranch.devintensive.utils.Utils
@@ -14,6 +15,11 @@ class ExampleUnitTest {
     fun test_user() {
         val user = User.makeUser("Tillabek Abylay")
         println(user)
+    }
+
+    @Test
+    fun test_check() {
+        print(Bender().checkAnswers(Bender.Question.SERIAL, "5555555"))
     }
 
     @Test

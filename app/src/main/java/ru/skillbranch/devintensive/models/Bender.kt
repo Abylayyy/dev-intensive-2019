@@ -17,16 +17,8 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
             question = question.nextQuestion()
             "Отлично - ты справился\n${question.question}" to status.color
         } else {
-            count ++
-            if (count > 3) {
-                count = 0
-                status = Status.NORMAL
-                question = Question.NAME
-                "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
-            } else {
-                status = status.nextStatus()
-                "Это неправильный ответ\n${question.question}" to status.color
-            }
+            status = status.nextStatus()
+            "${checkAnswers(question, answer)}\n${question.question}" to status.color
         }
     }
 
@@ -43,6 +35,40 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
                 values()[0]
             }
         }
+    }
+
+    fun checkAnswers(question: Question, answer: String): String {
+        var result = ""
+        val l = answer.length
+        when(question) {
+            Question.NAME -> {
+                if (l > 1 && !answer[0].isUpperCase()) {
+                    result = "Имя должно начинаться с заглавной буквы"
+                }
+            }
+            Question.PROFESSION -> {
+                if (l > 1 && answer[0].isUpperCase()) {
+                    result = "Профессия должна начинаться со строчной буквы"
+                }
+            }
+            Question.MATERIAL -> {
+                if (l > 1 && answer.contains("[0-9]".toRegex())) {
+                    result = "Материал не должен содержать цифр"
+                }
+            }
+            Question.BDAY -> {
+                if (l > 1 && answer.toIntOrNull() == null) {
+                    result = "Год моего рождения должен содержать только цифры"
+                }
+            }
+            Question.SERIAL -> {
+                if (answer.toIntOrNull() == null || l != 7) {
+                    result = "Серийный номер содержит только цифры, и их 7"
+                }
+            }
+            else -> {}
+        }
+        return result
     }
 
     enum class Question(val question: String, val answers: List<String>) {
