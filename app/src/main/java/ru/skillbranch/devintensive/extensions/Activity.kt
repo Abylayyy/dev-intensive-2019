@@ -7,7 +7,6 @@ import android.view.inputmethod.InputMethodManager
 
 object Activity {
     fun hideKeyBoard() {
-
     }
 }
 
