@@ -2,7 +2,6 @@ package ru.skillbranch.devintensive.extensions
 
 import android.app.Activity
 import android.content.Context
-import android.graphics.Rect
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 
@@ -17,7 +16,7 @@ fun Context.hideKeyboard(view: View) {
     inputManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-fun View.isKeyboardOpen() : Boolean {
+/*fun View.isKeyboardOpen() : Boolean {
     this.viewTreeObserver.addOnGlobalLayoutListener {
         val rect = Rect()
         this.getWindowVisibleDisplayFrame(rect)
@@ -47,4 +46,4 @@ fun View.isKeyboardClosed(): Boolean {
         }
     }
     return check
-}
+}*/
