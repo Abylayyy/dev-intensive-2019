@@ -8,3 +8,5 @@ fun String.stripHtml() : String {
     return s
 }
 
+
+

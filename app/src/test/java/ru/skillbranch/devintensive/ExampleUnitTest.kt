@@ -1,11 +1,11 @@
 package ru.skillbranch.devintensive
 
+import org.junit.Test
+import ru.skillbranch.devintensive.extensions.*
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
 import ru.skillbranch.devintensive.utils.Utils
-import org.junit.Test
-import ru.skillbranch.devintensive.extensions.*
 import java.util.*
 
 class ExampleUnitTest {
@@ -137,4 +137,33 @@ class ExampleUnitTest {
         println("<p class=\"title\">Образовательное IT-сообщество Skill Branch</p>".stripHtml())
         println("<p>Образовательное       IT-сообщество Skill Branch</p>".stripHtml())
     }
+
+    /*@Test
+    fun check_prime() {
+
+        println(Utils.isPrime(17)) // true
+
+        val array = Utils.update(
+            arrayOf(
+                arrayOf(0, 1, 0, 1, 1),
+                arrayOf(0, 0, 3, 0, 2),
+                arrayOf(0, 1, 2, 0, 1),
+                arrayOf(0, 1, 0, 1, 0),
+                arrayOf(0, 1, 0, 1, 0)
+            ), 3, 1, 10
+        )
+        for (i in array.indices) {
+            for (j in array[i].indices) {
+                print("${array[i][j]} ")
+            }
+            println()
+        }
+        *//*
+            0 10 0 10 10
+            0 0 3 0 2
+            0 10 2 0 10
+            0 10 0 10 0
+            0 10 0 10 0
+        *//*
+    }*/
 }

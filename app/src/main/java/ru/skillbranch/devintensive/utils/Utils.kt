@@ -63,4 +63,33 @@ object Utils {
         "Ч" to "Ch", "Ш" to "Sh", "Щ" to "Sh'", "Ы" to "I",
         "Э" to "E", "Ю" to "Yu", "Я" to "Ya"
     )
+
+    /*fun isPrime(n: Int): Boolean {
+        var check = true
+        for (i in 2..n / 2) {
+            if (n % i == 0) {
+                check = false
+                break
+            }
+        }
+        return check
+    }
+
+    fun update(array: Array<Array<Int>>, i: Int, j: Int, value: Int): Array<Array<Int>> {
+        val index = array[i][j]
+        for (a in array.indices) {
+            for (b in array[a].indices) {
+                if (array[a][b] == index) {
+                    array[a][b] = value
+                }
+            }
+        }
+        return array
+    }
+
+    fun findLargestWordStartingWithC(s: String) =
+        s.split(" ").sortedByDescending { it.length }
+            .maxBy { it.startsWith("c") }.toString().reversed()
+
+    */
 }
