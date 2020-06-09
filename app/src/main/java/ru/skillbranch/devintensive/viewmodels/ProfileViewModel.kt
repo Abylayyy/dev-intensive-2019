@@ -1,7 +1,6 @@
 package ru.skillbranch.devintensive.viewmodels
 
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
