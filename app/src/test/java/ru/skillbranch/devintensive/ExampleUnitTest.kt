@@ -3,66 +3,16 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 import ru.skillbranch.devintensive.extensions.*
 import ru.skillbranch.devintensive.models.BaseMessage
-import ru.skillbranch.devintensive.models.Bender
 import ru.skillbranch.devintensive.models.Chat
-import ru.skillbranch.devintensive.models.User
 import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 class ExampleUnitTest {
 
     @Test
-    fun test_user() {
-        val user = User.makeUser("Tillabek Abylay")
-        println(user)
-    }
-
-    @Test
-    fun test_check() {
-        print(Bender().checkAnswers(Bender.Question.SERIAL, "5555555"))
-    }
-
-    @Test
     fun test_format() {
         println(Date().format())
         println(Date().format("HH:mm"))
-    }
-
-    @Test
-    fun test_baseMessage() {
-        val user1 = User(
-            "1",
-            firstName = "John",
-            lastName = "Adams",
-            lastVisit = Date().add(
-                -1,
-                TimeUnits.HOUR
-            )
-        )
-        val user2 = User(
-            "2",
-            firstName = "John",
-            lastName = "Doe",
-            lastVisit = Date().add(
-                -2,
-                TimeUnits.MINUTE
-            )
-        )
-        println(
-            user1.lastVisit?.let {
-                BaseMessage.makeMessage(
-                    user1,
-                    Chat(
-                        "1",
-                        mutableListOf(user1, user2),
-                        mutableListOf()
-                    ),
-                    it,
-                    "image",
-                    "Hello"
-                ).formatMessage()
-            }
-        )
     }
 
     @Test
@@ -115,21 +65,6 @@ class ExampleUnitTest {
             ${TimeUnits.HOUR.plural(19)}
             ${TimeUnits.DAY.plural(222)}
         """.trimIndent())
-    }
-
-    @Test
-    fun test_builder() {
-        val user = User.Builder()
-            .id("1")
-            .firstName("Adam")
-            .lastName("Driver")
-            .avatar("image")
-            .rating(5)
-            .respect(10)
-            .lastVisit(Date().add(-5, TimeUnits.HOUR))
-            .isOnline(true)
-            .build()
-        println(user)
     }
 
     @Test
