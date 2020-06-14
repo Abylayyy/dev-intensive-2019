@@ -21,6 +21,12 @@ object PreferencesRepository {
         PreferenceManager.getDefaultSharedPreferences(ctx)
     }
 
+    fun saveAppTheme(value: Int) {
+        putValue(APP_THEME to value)
+    }
+
+    fun getAppTheme(): Int = prefs.getInt(APP_THEME, AppCompatDelegate.MODE_NIGHT_NO)
+
     fun getProfile(): Profile = Profile(
         prefs.getString(FIRST_NAME, "")!!,
         prefs.getString(LAST_NAME, "")!!,
@@ -54,10 +60,4 @@ object PreferencesRepository {
         }
         apply()
     }
-
-    fun saveAppTheme(value: Int) {
-        putValue(APP_THEME to value)
-    }
-
-    fun getAppTheme(): Int = prefs.getInt(APP_THEME, AppCompatDelegate.MODE_NIGHT_NO)
 }
